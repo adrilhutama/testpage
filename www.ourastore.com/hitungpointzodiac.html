@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.ourastore.com/hitungpointzodiac by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jun 2022 17:42:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="theme-color" content="#2d3238">
+<meta name="title" content="Oura Store - Top Up Game Termurah Dan Tercepat Se-Indonesia">
+<meta name="description" content="Oura Store Adalah Tempat Top Up Games Yang Aman, Murah. Oura Store Menyediakan Layanan Top Up Games seperti Diamond Mobile Legends, FF, Genshin Impact, AOV, dll. Untuk Mempermudah Pembayaran Anda Disini Kami Juga Menyediakan Metode Pembayaran Alfamart, Bank BCA, Bank Mandiri, Bank BNI, Bank Bri, DANA, OVO, Gopay, Shopee Pay, Link Aja, dll. Jika ada kendala silahkan klik logo CS pada kanan bawah di web ini.">
+
+<meta property="og:type" content="website">
+<meta name="csrf-token" content="SiCKFzb6AkWZ3ioWWX7PaPVbXYol0NYSSn7hpl43">
+<link rel="icon" href="../ourastore.com/assets/img/settings/1652681837fav%20icon5e1f.png?v=2">
+<title>Hitung Point Zodiac
+ - Oura Store</title>
+<link rel="stylesheet" href="assets/scss/app.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/scss/chatbox.css">
+<link rel="stylesheet" href="assets/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css">
+<script src="assets/js/app.js"></script>
+<script src="../www.google.com/recaptcha/api.js" async defer></script>
+<style>
+            #searchProds {
+                width: 60px;
+                transition: width .5s ease
+            }
+
+            #searchProds:focus {
+                width: 240px
+            }
+
+        </style>
+<script>
+            $(document).ready(function() {
+
+                $(".search_input").focusout(function() {
+                    setTimeout(() => {
+                        $(this).parent().dropdown("hide");
+                    }, 300);
+                    let $parent = $(this).parent(".mini").parent().parent().parent().parent();
+                    setTimeout(() => {
+                        $parent.find(".form-check").fadeIn(50);
+                    }, 300);
+                    $parent.parent().parent().find(".navbar-toggler").toggle("slide:left");
+                });
+                $(".search_input").focusin(function() {
+                    let $parent = $(this).parent(".mini").parent().parent().parent().parent();
+                    $parent.find(".form-check").fadeOut(50);
+                    $parent.parent().parent().find(".navbar-toggler").toggle("slide:left");
+
+                });
+                $(".search_input").keyup(function(e) {
+                    console.log(e.currentTarget)
+                    if (e.keyCode == 13) {
+                        $(this).parent().parent().submit();
+                    }
+                    var search = $(this).val();
+                    $.ajax({
+                        url: "https://www.ourastore.com/api/search",
+                        type: "POST",
+                        data: {
+                            q: search,
+                            _token: "SiCKFzb6AkWZ3ioWWX7PaPVbXYol0NYSSn7hpl43"
+                        },
+                        success: function(data) {
+                            if (data.length > 0) {
+                                $(e.currentTarget).parent().dropdown("show");
+                                console.log($(e.currentTarget).parent());
+                                $(e.currentTarget).parent().siblings("#dropDownSearchResults").html(
+                                    "")
+                                let _results = [];
+                                var sorted = {};
+                                for (var i = 0, max = data.length; i < max; i++) {
+                                    if (sorted[data[i].category] == undefined) {
+                                        sorted[data[i].category] = [];
+                                    }
+                                    sorted[data[i].category].push(data[i]);
+                                }
+                                for (category in sorted) {
+                                    _results.push(
+                                        `<li><span class="dropdown-item-text"><b>${category.toUpperCase()}</b></span></li>`
+                                    );
+                                    sorted[category].forEach(element => {
+                                        _results.push(`
+                                            <li><a class="dropdown-item" href="order/_slug.html">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img src="${element.thumbnail}" alt="" class="img-fluid">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <b>${ element.name}</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <small>${ element.subtitle }</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a></li>`
+                                            .replace(':slug', element.slug))
+                                    })
+                                }
+
+                                $(e.currentTarget).parent().siblings("#dropDownSearchResults")
+                                    .append(_results
+                                        .join(
+                                            `<hr class="dropdown-divider">`));
+                            } else {
+                                $(e.currentTarget).parent().dropdown("hide");
+                            }
+                        }
+                    });
+                });
+            })
+        </script>
+<script src="../cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<style>
+    #searchProds {
+        width: 60px;
+        transition: width .5s ease
+    }
+
+    #searchProds:focus {
+        width: 240px
+    }
+
+    .wave {
+        min-height: 100%;
+        background-attachment: scroll;
+        background-image: url("assets/img/wave.svg");
+        background-repeat: no-repeat;
+        background-position: bottom left, bottom right;
+    }
+
+    .wave2 {
+        min-height: 100%;
+        background-attachment: fixed;
+        background-image: url("assets/img/wave2.svg");
+        background-repeat: no-repeat;
+        background-position: top left, top right;
+    }
+
+    .fab-container {
+        position: fixed;
+        bottom: 70px;
+        right: 10px;
+        z-index: 999;
+        cursor: pointer;
+    }
+
+    .fab-icon-holder {
+        width: 45px;
+        height: 45px;
+        bottom: 140px;
+        left: 10px;
+        color: #FFF;
+        background: #5865f2;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 30px;
+        z-index: 99999;
+    }
+
+    .fab-icon-holder:hover {
+        opacity: 0.8;
+    }
+
+    .fab-icon-holder i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 25px;
+        color: #ffffff;
+    }
+
+    .fab-options {
+        list-style-type: none;
+        margin: 0;
+        position: absolute;
+        bottom: 48px;
+        left: -37px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        transform: scale(0);
+        transform-origin: 85% bottom;
+    }
+
+    .fab:hover+.fab-options,
+    .fab-options:hover {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .fab-options li {
+        display: flex;
+        justify-content: flex-start;
+        padding: 5px;
+    }
+
+    .fab-label {
+        padding: 2px 5px;
+        align-self: center;
+        user-select: none;
+        white-space: nowrap;
+        border-radius: 3px;
+        font-size: 16px;
+        background: #666666;
+        color: #ffffff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        margin-left: 10px;
+    }
+
+    .act-btn {
+        display: block;
+        position: fixed;
+        width: 45px;
+        height: 45px;
+        bottom: 140px;
+        left: 10px;
+        color: #FFF;
+        background: #5c8a8a;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 30px;
+        z-index: 99999;
+    }
+
+    .act-btn:hover {
+        background: #212529;
+    }
+
+    .act-btn-top {
+        display: none;
+        position: fixed;
+        width: 45px;
+        height: 45px;
+        bottom: 140px;
+        left: 10px;
+        color: #FFF;
+        background: #5c8a8a;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 30px;
+        z-index: 99999;
+    }
+
+    .act-btn-top:hover {
+        background: #212529;
+    }
+
+    .rounded-img-buy {
+        border-radius: 8px !important;
+    }
+    .rounded-card {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .rounded-card1 {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .size-img-buy {
+        height: 130px;
+    }
+
+    .size-img-buy-v {
+        width: 100px;
+        height: auto;
+    }
+
+    .btn-topup {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        width: 90%;
+        max-width: 130px;
+    }
+    .text-yellow {
+        color: #B19973 !important;
+    }
+    .btn-primary {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        border-color: #B19973;
+    }
+
+    .strip-primary {
+        background-color: #B19973 !important;
+    }
+
+    .btn-primary:hover {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        border-color: #d3b077;
+        box-shadow: 0.1px 1px 1px 1px 1px #d3b077;
+
+    }
+
+    .btn-topup:hover {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        border-color: #d3b077;
+        box-shadow: 0.1px 1px 1px 1px #d3b077;
+        width: 90%;
+    }
+    .product-tile__clip-path[data-v-10b0ebbe] {
+    clip-path: polygon(0 90%,7% 60%,16% 90%,23% 70%,33% 90%,38% 88%,43% 80%,45% 50%,51% 50%,57% 70%,67% 70%,77% 50%,86% 90%,89% 90%,93% 50%,97% 50%,100% calc(100% + 1px),0 calc(100% + 1px));
+    -webkit-clip-path: polygon(0 90%,7% 60%,16% 90%,23% 70%,33% 90%,38% 88%,43% 80%,45% 50%,51% 50%,57% 70%,67% 70%,77% 50%,86% 90%,89% 90%,93% 50%,97% 50%,100% calc(100% + 1px),0 calc(100% + 1px));
+    /* background-color: #21252C ; */
+    width: 100%;
+    height: 40px;
+    margin-top: -35px;
+    }
+</style>
+<body style="background-color: #2d3238" class="d-flex flex-column min-vh-100  text-white">
+<header class="mb-5">
+<nav class="navbar navbar-expand-lg fixed-top  navbar-dark bg-dark shadow ">
+<div class="container">
+<div class="d-flex">
+<span class="w-100 d-lg-none d-block">
+
+</span>
+<a class="navbar-brand d-none d-lg-inline-block" href="index.html">
+<img src="../ourastore.com/assets/img/settings/1652681321tes%201.png" alt="LOGO" height="40px" class="bi me-2">
+</a>
+<a class="navbar-brand mx-auto d-lg-none d-inline-block" href="index.html">
+<img src="../ourastore.com/assets/img/settings/1652681321tes%201.png" alt="LOGO" height="40px" class="bi me-2">
+</a>
+</div>
+<div class="d-flex">
+<div class="form-check float-start form-switch ms-auto mt-3 me-3">
+<label class="form-check-label ms-3" for="lightSwitch">
+</label>
+<input class="form-check-input" type="checkbox" id="lightSwitch" />
+</div>
+</div>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse text-right" id="navbarTogglerDemo03">
+<ul class="navbar-nav ms-auto nav-stacked">
+<li class="nav-item">
+<a href="index.html" class="nav-link ">
+<i class="fa fa-home"></i>
+Home</a>
+</li>
+<li class="nav-item">
+<a href="status.html" class="nav-link ">
+<i class="fas fa-search"></i>
+Check Invoice</a>
+</li>
+<div class="dropdown">
+<button class="btn dropdown-toggle nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="fas fa-calculator"></i> Calculator ML
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+<li class="nav-item">
+<a style="color:#000;" href="hitungpointmw.html" class="nav-link"> <i class="fas fa-address-card"></i> HP Magic Wheel</a>
+</li>
+<li class="nav-item">
+<a style="color:#000;" href="hitungpointzodiac.html" class="nav-link"> <i class="fas fa-address-card"></i> HP Zodiac</a>
+</li>
+</ul>
+</div>
+<li class="nav-item pe-md-2 dropdown d-lg-inline-block d-none">
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+<div class="wrapper pt-4">
+<br>
+<style>
+    .slidecontainer {
+        width: 100%;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 25px;
+        background: #B19973;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+        border-radius: 12px;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #fedf50;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #000000;
+        cursor: pointer;
+    }
+
+</style>
+<div class="container">
+<div class="row my-5">
+<div class="col-sm-5 col-12 mb-5">
+<img src="../ourastore.com/assets/img/settings/1652681321tes%201.png" class="mlImg" alt="MobileLegends" />
+<h5 class="text-white mt-3 mb-1">Kalkulator Zodiac</h5>
+<small class="text-white">Kalkulator Zodiac ini berfungsi untuk mengetahui total maksimal diamond yang kamu
+butuhkan untuk mendapatkan skin Zodiac.<br /></small>
+</div>
+<div class="col-sm-7 col-12">
+<form method="post" target="">
+<div class="row">
+<h5 class="mb-2 text-white">Geser Sesuai Point Zodiac Anda</h5>
+<div class="col-12 col-lg-8 mb-5">
+<div class="slidecontainer">
+<p>&nbsp;</p>
+<span>
+<span color='white'>Star Point Anda : </span >
+</span> <span id="f" style="font-weight:bold;color:#30cdf8"></span><br />
+<input type="range" min="0" max="99" value="50" name="sld6" class="slider" id="myRange" onchange="show_value2(this.value)">
+<span color='white'>Membutuhkan Maksimal : </span><span id="slider_value2" style="color:white;font-weight:bold;"></span>
+<i class="fas fa-gem" style="color: #00c8c8"></i><br>
+</div>
+<br>
+<a href="order/mobile-legends-proses-otomatis.html" class="d-flex align-items-center btn btn-confrim px-4 py-2 btn-lg border" style="background-color:#B19973;">
+<span class="content-justify-center" style="color: #fff;">Klik Untuk Membeli Diamond</span>
+</a>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+<script>
+        function show_value2(x) {
+
+            if (x < 90) {
+                yz = Math.ceil((2000 - x * 20) * 850 / 1000);
+            }
+
+            if (x > 89) {
+                yz = Math.ceil((2000 - x * 20));
+            }
+
+            document.getElementById("slider_value2").innerHTML = yz;
+
+        }
+    </script>
+<script>
+        var slideCol = document.getElementById("myRange");
+        var y = document.getElementById("f");
+        y.innerHTML = slideCol.value;
+
+        slideCol.oninput = function() {
+            y.innerHTML = this.value;
+        }
+    </script>
+</div>
+<div class="modal fade" id="modalInformations" aria-hidden="true" aria-labelledby="modalInformationsLabel" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+<div class="modal-content bg-dark" style="box-shadow:0 0 3rem #000000 !important">
+<div class="modal-body">
+<div class="row" id="textInfo">
+</div>
+<div class="row">
+<div class="col float-start">
+<div class="form-check" style="font-size:12px">
+<input class="form-check-input" type="checkbox" value="" id="dontshowinfo">
+<label class="form-check-label" for="dontshowinfo">
+Jangan Tampilkan lagi
+</label>
+</div>
+</div>
+<div class="col text-end">
+<button type="submit" name="read_popup_news_b2c" style="font-size:12px" class="btn btn-primary btn-sm">
+Tutup
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+ <footer class="footer mt-auto border-dark  shadow-lg">
+<div class="container mt-5">
+<div class="row">
+<div class="col-lg-6">
+<img src="../ourastore.com/assets/img/settings/1652681321tes%201.png" alt="LOGO" style="float:left;margin-left:2%;height:40px;
+                                                                                                                            width:40px; " class="bi me-2">
+<h5 class="text-uppercase mt-2" style="margin:0">Oura Store</h5>
+<div class="mt-2">
+<p>Oura Store Adalah Tempat Top Up Games Yang Aman, Murah. Oura Store Menyediakan Layanan Top Up Games seperti Diamond Mobile Legends, FF, Genshin Impact, AOV, dll. Untuk Mempermudah Pembayaran Anda Disini Kami Juga Menyediakan Metode Pembayaran Alfamart, Bank BCA, Bank Mandiri, Bank BNI, Bank Bri, DANA, OVO, Gopay, Shopee Pay, Link Aja, dll. Jika ada kendala silahkan klik logo CS pada kanan bawah di web ini.</p>
+</div>
+</div>
+<div class="col-lg-3">
+<h5 class="mt-2">Menu</h5>
+<div class="mt-2">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a href="index.html" class="nav-link text-white ">
+<i class="fas fa-angle-right text-yellow"></i>
+Home
+</a>
+</li>
+<li class="nav-item">
+<a href="contact-us.html" class="nav-link text-white ">
+<i class="fas fa-angle-right text-yellow"></i>
+Contact us
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col">
+<h5 class="mt-2">Other Services</h5>
+<div class="mt-2">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a href="order/mobile-legends-proses-otomatis.html" class="nav-link text-white">
+<i class="fas fa-angle-right text-yellow"></i>
+Mobile Legends
+</a>
+</li>
+<li class="nav-item">
+<a href="order/free-fire-proses-otomatis.html" class="nav-link text-white">
+<i class="fas fa-angle-right text-yellow"></i>
+Free Fire
+</a>
+</li>
+<li class="nav-item">
+<a href="order/call-of-duty-mobile-cash-point.html" class="nav-link text-white">
+<i class="fas fa-angle-right text-yellow"></i>
+Call of Duty Mobile
+</a>
+</li>
+ <li class="nav-item">
+<a href="order/arena-of-valor-aov-voucher.html" class="nav-link text-white">
+<i class="fas fa-angle-right text-yellow"></i>
+Arena of Valor
+</a>
+</li>
+<li class="nav-item">
+<a href="order/sausage-man-candys.html" class="nav-link text-white">
+<i class="fas fa-angle-right text-yellow"></i>
+Sausage Man
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid mt-2">
+<div class="row" id="footer-credit" style="background:#181b1f">
+<div class="col">
+<div class="container mt-2 mb-2 text-center">
+<small>
+Copyright &copy; 2021 by <a href="index.html" class="text-white">Oura Store</a>
+- <a href="terms-and-conditions.html" class="text-white">Terms and
+conditions</a>
+- <a href="privacy-policy.html" class="text-white">Privacy Policy</a>
+</small>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+<script src="assets/admin/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="assets/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="assets/js/switch.js"></script>
+<script src="assets/js/promoBox.js"></script>
+<div class="fab-container">
+<div class="fab fab-icon-holder" style="background-color:#FFF; padding:5px">
+<img src="assets/img/logos/callcenter.png" class="img-fluid" alt="">
+</div>
+<ul class="fab-options">
+<li>
+<a href="https://www.instagram.com/ouraastore/" class="text-decoration-none" target="_blank">
+<div class="fab-icon-holder" style="background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);">
+<i class="fab fa-instagram"></i>
+</div>
+</a>
+</li>
+<li>
+<a href="https://wa.me/6281333686227" class="text-decoration-none" target="_blank">
+<div class="fab-icon-holder" style="background-color: #25D366;">
+<i class="fab fa-whatsapp"></i>
+ </div>
+</a>
+</li>
+<li>
+<a href="https://www.tiktok.com/@ouraastore" class="text-decoration-none" target="_blank">
+<div class="fab-icon-holder" style="background-color: #5865F2;">
+<i class="fab fa-tiktok"></i>
+</div>
+</a>
+</li>
+</ul>
+<a href="#" class="act-btn-top text-decoration-none" onclick="toTop()" style="display: none; background-color: #bd4cae; bottom: 19px;">
+<i class="fas fa-angle-up mt-2"></i>
+</a>
+</div>
+</script>
+<script src="../cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous">
+    </script>
+</body>
+<script>
+    mybutton = document.querySelector(".act-btn-top");
+    window.onscroll = function() {
+        scrollFunc()
+    };
+
+    function scrollFunc() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function toTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        let $infoTexts = ``;
+        if ($.cookie('dontshow')) {
+            $infoTexts = '';
+        }
+        if ($infoTexts) {
+            $("#modalInformations").modal('show');
+            if (localStorage.getItem("lightSwitch") && localStorage.getItem("lightSwitch") !== "dark") {
+                $infoTexts = $infoTexts.replace(/bg-dark/g, "bg-light");
+            }
+            $("#modalInformations").find("#textInfo").html($infoTexts);
+        }
+        $("button[name='read_popup_news_b2c']").click(function() {
+            if ($("#dontshowinfo").is(":checked")) {
+                var date = new Date();
+                date.setTime(date.getTime() + (10 * 60 * 1000)); // jam * menit * detik * milidetik
+                $.cookie('dontshow', true, {
+                    expires: date
+                });
+            }
+            $("#modalInformations").modal('hide');
+        });
+    })
+</script>
+
+<!-- Mirrored from www.ourastore.com/hitungpointzodiac by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jun 2022 17:42:00 GMT -->
+</html>

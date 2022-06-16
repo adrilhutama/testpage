@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from www.ourastore.com/order/mobile-legends-proses-otomatis by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jun 2022 17:42:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="theme-color" content="#2d3238">
+<meta name="title" content="Oura Store - Top Up Game Termurah Dan Tercepat Se-Indonesia">
+<meta property="og:url" content="mobile-legends-proses-otomatis.html">
+<meta property="og:title" content="Mobile Legends — Oura Store">
+<meta property="og:description" content="Top Up Diamond Mobile Legends Masukkan ID (SERVER)
+                Pilih Nominal Diamond
+                Pilih Metode Pembayaran
+                Tulis nomor ">
+<meta property="og:image" content="../../ourastore.com/assets/img/1652788561mlbb_tile.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="www.ourastore.com">
+<meta property="twitter:url" content="mobile-legends-proses-otomatis.html">
+<meta name="twitter:title" content="Mobile Legends — Oura Store">
+<meta name="twitter:description" content="Top Up Diamond Mobile Legends Masukkan ID (SERVER)
+                Pilih Nominal Diamond
+                Pilih Metode Pembayaran
+                Tulis n...">
+<meta name="twitter:image" content="../../ourastore.com/assets/img/1652788561mlbb_tile.jpg">
+<meta name="description" content="Oura Store Adalah Tempat Top Up Games Yang Aman, Murah. Oura Store Menyediakan Layanan Top Up Games seperti Diamond Mobile Legends, FF, Genshin Impact, AOV, dll. Untuk Mempermudah Pembayaran Anda Disini Kami Juga Menyediakan Metode Pembayaran Alfamart, Bank BCA, Bank Mandiri, Bank BNI, Bank Bri, DANA, OVO, Gopay, Shopee Pay, Link Aja, dll. Jika ada kendala silahkan klik logo CS pada kanan bawah di web ini.">
+
+<meta property="og:type" content="website">
+<meta name="csrf-token" content="SiCKFzb6AkWZ3ioWWX7PaPVbXYol0NYSSn7hpl43">
+<link rel="icon" href="../../ourastore.com/assets/img/settings/1652681837fav%20icon5e1f.png?v=2">
+<title>Mobile Legends - Top Up Game Termurah Dan Tercepat Se-Indonesia
+ - Oura Store</title>
+<link rel="stylesheet" href="../assets/scss/app.css">
+<link rel="stylesheet" href="../assets/css/app.css">
+<link rel="stylesheet" href="../assets/scss/chatbox.css">
+<link rel="stylesheet" href="../assets/admin/assets/plugins/bootstrap-select/bootstrap-select.min.css">
+<script src="../assets/js/app.js"></script>
+<script src="../../www.google.com/recaptcha/api.js" async defer></script>
+<style>
+            #searchProds {
+                width: 60px;
+                transition: width .5s ease
+            }
+
+            #searchProds:focus {
+                width: 240px
+            }
+
+        </style>
+<script>
+            $(document).ready(function() {
+
+                $(".search_input").focusout(function() {
+                    setTimeout(() => {
+                        $(this).parent().dropdown("hide");
+                    }, 300);
+                    let $parent = $(this).parent(".mini").parent().parent().parent().parent();
+                    setTimeout(() => {
+                        $parent.find(".form-check").fadeIn(50);
+                    }, 300);
+                    $parent.parent().parent().find(".navbar-toggler").toggle("slide:left");
+                });
+                $(".search_input").focusin(function() {
+                    let $parent = $(this).parent(".mini").parent().parent().parent().parent();
+                    $parent.find(".form-check").fadeOut(50);
+                    $parent.parent().parent().find(".navbar-toggler").toggle("slide:left");
+
+                });
+                $(".search_input").keyup(function(e) {
+                    console.log(e.currentTarget)
+                    if (e.keyCode == 13) {
+                        $(this).parent().parent().submit();
+                    }
+                    var search = $(this).val();
+                    $.ajax({
+                        url: "https://www.ourastore.com/api/search",
+                        type: "POST",
+                        data: {
+                            q: search,
+                            _token: "SiCKFzb6AkWZ3ioWWX7PaPVbXYol0NYSSn7hpl43"
+                        },
+                        success: function(data) {
+                            if (data.length > 0) {
+                                $(e.currentTarget).parent().dropdown("show");
+                                console.log($(e.currentTarget).parent());
+                                $(e.currentTarget).parent().siblings("#dropDownSearchResults").html(
+                                    "")
+                                let _results = [];
+                                var sorted = {};
+                                for (var i = 0, max = data.length; i < max; i++) {
+                                    if (sorted[data[i].category] == undefined) {
+                                        sorted[data[i].category] = [];
+                                    }
+                                    sorted[data[i].category].push(data[i]);
+                                }
+                                for (category in sorted) {
+                                    _results.push(
+                                        `<li><span class="dropdown-item-text"><b>${category.toUpperCase()}</b></span></li>`
+                                    );
+                                    sorted[category].forEach(element => {
+                                        _results.push(`
+                                            <li><a class="dropdown-item" href="_slug.html">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img src="${element.thumbnail}" alt="" class="img-fluid">
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <b>${ element.name}</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <small>${ element.subtitle }</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a></li>`
+                                            .replace(':slug', element.slug))
+                                    })
+                                }
+
+                                $(e.currentTarget).parent().siblings("#dropDownSearchResults")
+                                    .append(_results
+                                        .join(
+                                            `<hr class="dropdown-divider">`));
+                            } else {
+                                $(e.currentTarget).parent().dropdown("hide");
+                            }
+                        }
+                    });
+                });
+            })
+        </script>
+<script src="../../cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<style type="text/css">
+      <style type="text/css">
+        .list-group-item {
+            user-select: none;
+        }
+        .bangjeff-dicek {
+            font-size: 9px;
+            font-style: italic;
+            color: #B19973;
+        }
+
+        .list-group input[type="radio"] {
+            display: none;
+        }
+
+        .list-group input[type="radio"]+.list-group-item {
+            text-align: center;
+            cursor: pointer;
+            background-color: #FFF;
+            color: rgb(102, 102, 102);
+            border-color: #B19973;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .list-group-item:last-child {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .list-group input[type="radio"]+.list-group-item:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 230, 0.5);
+            color: rgb(102, 102, 102);
+            border-color: #B19973;
+
+            font-size: 12px;
+        }
+        .list-group input[type="radio"]:checked+.list-group-item {
+            background-color: #B19973;
+            color: #FFF;
+            font-size: 12px;
+        }
+        .child-box {
+        border: 1px solid rgba(174, 174, 174, 0.5);
+        margin-bottom: 18px;
+        border-radius: 7px !important;
+        background: rgba(235, 235, 235, 0.035);
+        }
+        .child-box:hover {
+        border: 1px solid #B19973;
+        }
+        .button-action-payment input[type="radio"]:checked+.payment-item {
+        color: #000000;
+        }
+        .button-action-payment li.active {
+        border: 1px solid #B19973;
+        background: rgb(232, 232, 232);
+        filter: grayscale(0%);
+        }
+    </style>
+</head>
+<style>
+    #searchProds {
+        width: 60px;
+        transition: width .5s ease
+    }
+
+    #searchProds:focus {
+        width: 240px
+    }
+
+    .wave {
+        min-height: 100%;
+        background-attachment: scroll;
+        background-image: url("../assets/img/wave.svg");
+        background-repeat: no-repeat;
+        background-position: bottom left, bottom right;
+    }
+
+    .wave2 {
+        min-height: 100%;
+        background-attachment: fixed;
+        background-image: url("../assets/img/wave2.svg");
+        background-repeat: no-repeat;
+        background-position: top left, top right;
+    }
+
+    .fab-container {
+        position: fixed;
+        bottom: 70px;
+        right: 10px;
+        z-index: 999;
+        cursor: pointer;
+    }
+
+    .fab-icon-holder {
+        width: 45px;
+        height: 45px;
+        bottom: 140px;
+        left: 10px;
+        color: #FFF;
+        background: #5865f2;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 30px;
+        z-index: 99999;
+    }
+
+    .fab-icon-holder:hover {
+        opacity: 0.8;
+    }
+
+    .fab-icon-holder i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 25px;
+        color: #ffffff;
+    }
+
+    .fab-options {
+        list-style-type: none;
+        margin: 0;
+        position: absolute;
+        bottom: 48px;
+        left: -37px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        transform: scale(0);
+        transform-origin: 85% bottom;
+    }
+
+    .fab:hover+.fab-options,
+    .fab-options:hover {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .fab-options li {
+        display: flex;
+        justify-content: flex-start;
+        padding: 5px;
+    }
+
+    .fab-label {
+        padding: 2px 5px;
+        align-self: center;
+        user-select: none;
+        white-space: nowrap;
+        border-radius: 3px;
+        font-size: 16px;
+        background: #666666;
+        color: #ffffff;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        margin-left: 10px;
+    }
+
+    .act-btn {
+        display: block;
+        position: fixed;
+        width: 45px;
+        height: 45px;
+        bottom: 140px;
+        left: 10px;
+        color: #FFF;
+        background: #5c8a8a;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 30px;
+        z-index: 99999;
+    }
+
+    .act-btn:hover {
+        background: #212529;
+    }
+
+    .act-btn-top {
+        display: none;
+        position: fixed;
+        width: 45px;
+        height: 45px;
+        bottom: 140px;
+        left: 10px;
+        color: #FFF;
+        background: #5c8a8a;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 30px;
+        z-index: 99999;
+    }
+
+    .act-btn-top:hover {
+        background: #212529;
+    }
+
+    .rounded-img-buy {
+        border-radius: 8px !important;
+    }
+    .rounded-card {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    .rounded-card1 {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .size-img-buy {
+        height: 130px;
+    }
+
+    .size-img-buy-v {
+        width: 100px;
+        height: auto;
+    }
+
+    .btn-topup {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        width: 90%;
+        max-width: 130px;
+    }
+    .text-yellow {
+        color: #B19973 !important;
+    }
+    .btn-primary {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        border-color: #B19973;
+    }
+
+    .strip-primary {
+        background-color: #B19973 !important;
+    }
+
+    .btn-primary:hover {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        border-color: #d3b077;
+        box-shadow: 0.1px 1px 1px 1px 1px #d3b077;
+
+    }
+
+    .btn-topup:hover {
+        color: #ffffff !important;
+        background-color: #B19973 !important;
+        border-color: #d3b077;
+        box-shadow: 0.1px 1px 1px 1px #d3b077;
+        width: 90%;
+    }
+    .product-tile__clip-path[data-v-10b0ebbe] {
+    clip-path: polygon(0 90%,7% 60%,16% 90%,23% 70%,33% 90%,38% 88%,43% 80%,45% 50%,51% 50%,57% 70%,67% 70%,77% 50%,86% 90%,89% 90%,93% 50%,97% 50%,100% calc(100% + 1px),0 calc(100% + 1px));
+    -webkit-clip-path: polygon(0 90%,7% 60%,16% 90%,23% 70%,33% 90%,38% 88%,43% 80%,45% 50%,51% 50%,57% 70%,67% 70%,77% 50%,86% 90%,89% 90%,93% 50%,97% 50%,100% calc(100% + 1px),0 calc(100% + 1px));
+    /* background-color: #21252C ; */
+    width: 100%;
+    height: 40px;
+    margin-top: -35px;
+    }
+</style>
+<body style="background-color: #2d3238" class="d-flex flex-column min-vh-100  text-white">
+<header class="mb-5">
+<nav class="navbar navbar-expand-lg fixed-top  navbar-dark bg-dark shadow ">
+<div class="container">
+<div class="d-flex">
+<span class="w-100 d-lg-none d-block">
+
+</span>
+<a class="navbar-brand d-none d-lg-inline-block" href="../index.html">
+<img src="../../ourastore.com/assets/img/settings/1652681321tes%201.png" alt="LOGO" height="40px" class="bi me-2">
+</a>
+<a class="navbar-brand mx-auto d-lg-none d-inline-block" href="../index.html">
+<img src="../../ourastore.com/assets/img/settings/1652681321tes%201.png" alt="LOGO" height="40px" class="bi me-2">
+</a>
+</div>
+<div class="d-flex">
+<div class="form-check float-start form-switch ms-auto mt-3 me-3">
+<label class="form-check-label ms-3" for="lightSwitch">
+</label>
+<input class="form-check-input" type="checkbox" id="lightSwitch" />
+</div>
+</div>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse text-right" id="navbarTogglerDemo03">
+<ul class="navbar-nav ms-auto nav-stacked">
+<li class="nav-item">
+<a href="../index.html" class="nav-link ">
+<i class="fa fa-home"></i>
+Home</a>
+</li>
+<li class="nav-item">
+<a href="../status.html" class="nav-link ">
+<i class="fas fa-search"></i>
+Check Invoice</a>
+</li>
+<div class="dropdown">
+<button class="btn dropdown-toggle nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+<i class="fas fa-calculator"></i> Calculator ML
+</button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+<li class="nav-item">
+<a style="color:#000;" href="../hitungpointmw.html" class="nav-link"> <i class="fas fa-address-card"></i> HP Magic Wheel</a>
+</li>
+<li class="nav-item">
+<a style="color:#000;" href="../hitungpointzodiac.html" class="nav-link"> <i class="fas fa-address-card"></i> HP Zodiac</a>
+</li>
+</ul>
+</div>
+<li class="nav-item pe-md-2 dropdown d-lg-inline-block d-none">
+</li>
+</ul>
+</div>
+</div>
+</nav>
+</header>
+<div class="wrapper pt-4">
+<br>
+<div class="container">
+
+<div class="modal fade" id="petunjukModal" tabindex="-1" aria-labelledby="petunjukModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header bg-dark">
+<h5 class="modal-title text-white" id="petunjukModalLabel">Petunjuk</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body bg-dark">
+<img src="../../ourastore.com/assets/img/1649738625ML.jpg" alt="Petunjuk Mobile Legends" class="img-fluid">
+</div>
+<div class="modal-footer bg-dark">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-4 mt-2 mb-2">
+<div class="row">
+<div class="col-12">
+<div class="card bg-dark shadow">
+<div class="card-body">
+<img src="../../ourastore.com/assets/img/1652788561mlbb_tile.jpg" alt="" class="shadow rounded bg-dark mx-auto mb-2 d-lg-block d-none " width="150">
+<div class="row">
+<div class="col">
+<h3>Mobile Legends</h3>
+<div class="strip-primary"></div><br>
+<span class="text-muted mt-3 mb-3">Proses Otomatis</span>
+<img src="../../ourastore.com/assets/img/1652788561mlbb_tile.jpg" alt="" class="shadow rounded bg-dark float-start mt-2 me-2 mb-0 d-lg-none d-block" width="45" />
+<p>Top Up Diamond Mobile Legends <ol><li>Masukkan <b>ID (SERVER)
+</b></li><li>Pilih <b>Nominal </b>Diamond
+</li><li>Pilih <b>Metode Pembayaran</b>
+</li><li>Tulis <b>nomor WhatsApp</b> yg benar!
+</li><li>Klik <b>Beli </b>&amp; lakukan Pembayaran
+</li><li><b>Tunggu 1-3 Menit</b>. Setelah Pembayaran Terdeteksi Oleh Sistem Kami, Diamond akan Masuk. JIKA EVENT MAKS 2 JAM<br></li></ol><p style="text-align: center; "><font size="3" color="#ff9c00"><b>Top Up Buka 24 Jam</b></font></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col mt-3 d-lg-block d-none">
+<div class="card bg-dark shadow">
+<div class="card-header">Game Lainnya</div>
+<div class="card-body">
+<div class="row mb-2">
+<div class="col">
+<div class="card flex-row flex-wrap bg-dark">
+<div class="card-header border-0">
+<a href="free-fire-proses-otomatis.html" class="stretched-link">
+<img src="../../ourastore.com/assets/img/1649747105FF.jpg" height="50px" alt="1649747105FF-icon">
+</a>
+</div>
+<div class="card-body">
+<b>Free Fire</b><br>
+Diamond
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-8 mt-2 mb-2">
+<div class="row">
+<div class="col">
+<div class="card bg-dark shadow">
+<div class="card-header">
+<h5 class="card-title">Lengkapi Data</h5>
+</div>
+<div class="card-body">
+<div id="userData">
+<div class="row row-cols row-cols-md">
+<div class="col-lg-6">
+<div class="form-group mb-3">
+<label for="userId">User ID</label>
+<input class="form-control" placeholder="Masukkan User ID" type="number" name="userId" id="userId" required>
+</div>
+</div>
+<div class="col-lg-6">
+<div class="form-group mb-3">
+<label for="serverid">Server ID</label>
+<input class="form-control" placeholder="Masukkan Server ID" type="number" name="serverid" id="serverid" required>
+</div>
+</div>
+</div>
+</div>
+<button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#petunjukModal">Petunjuk</button>
+</div>
+</div>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col">
+<div class="card bg-dark shadow">
+<div class="card-header">
+<h5 class="card-title">Pilih Nominal</h5>
+</div>
+<div class="card-body">
+<div id="tempatNominal">
+<div class="row row-cols-2">
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-4" value="4" data-type="diamond">
+<label for="nominal-4" class="list-group-item">
+86 Diamonds
+</label>
+</div>
+ </div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-5" value="5" data-type="diamond">
+<label for="nominal-5" class="list-group-item">
+172 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-6" value="6" data-type="diamond">
+<label for="nominal-6" class="list-group-item">
+257 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-12" value="12" data-type="diamond">
+<label for="nominal-12" class="list-group-item">
+344 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-7" value="7" data-type="diamond">
+<label for="nominal-7" class="list-group-item">
+ 429 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-8" value="8" data-type="diamond">
+<label for="nominal-8" class="list-group-item">
+514 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-9" value="9" data-type="diamond">
+<label for="nominal-9" class="list-group-item">
+600 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-10" value="10" data-type="diamond">
+<label for="nominal-10" class="list-group-item">
+706 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-11" value="11" data-type="diamond">
+<label for="nominal-11" class="list-group-item">
+792 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-13" value="13" data-type="diamond">
+<label for="nominal-13" class="list-group-item">
+878 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-14" value="14" data-type="diamond">
+<label for="nominal-14" class="list-group-item">
+963 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-15" value="15" data-type="diamond">
+<label for="nominal-15" class="list-group-item">
+1049 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+ <div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-16" value="16" data-type="diamond">
+<label for="nominal-16" class="list-group-item">
+1135 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-17" value="17" data-type="diamond">
+<label for="nominal-17" class="list-group-item">
+1412 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-18" value="18" data-type="diamond">
+<label for="nominal-18" class="list-group-item">
+1584 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-19" value="19" data-type="diamond">
+<label for="nominal-19" class="list-group-item">
+1841 Diamonds
+</label>
+</div>
+ </div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-20" value="20" data-type="diamond">
+<label for="nominal-20" class="list-group-item">
+2195 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-21" value="21" data-type="diamond">
+<label for="nominal-21" class="list-group-item">
+2280 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-22" value="22" data-type="diamond">
+<label for="nominal-22" class="list-group-item">
+3072 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-23" value="23" data-type="diamond">
+<label for="nominal-23" class="list-group-item">
+ 3688 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-24" value="24" data-type="diamond">
+<label for="nominal-24" class="list-group-item">
+3860 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-25" value="25" data-type="diamond">
+<label for="nominal-25" class="list-group-item">
+4031 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-26" value="26" data-type="diamond">
+<label for="nominal-26" class="list-group-item">
+4566 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-27" value="27" data-type="diamond">
+<label for="nominal-27" class="list-group-item">
+5532 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-28" value="28" data-type="diamond">
+<label for="nominal-28" class="list-group-item">
+6238 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-29" value="29" data-type="diamond">
+<label for="nominal-29" class="list-group-item">
+6752 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-30" value="30" data-type="diamond">
+<label for="nominal-30" class="list-group-item">
+8432 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+ <div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-31" value="31" data-type="diamond">
+<label for="nominal-31" class="list-group-item">
+9288 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-32" value="32" data-type="diamond">
+<label for="nominal-32" class="list-group-item">
+11064 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-33" value="33" data-type="diamond">
+<label for="nominal-33" class="list-group-item">
+11321 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-34" value="34" data-type="diamond">
+<label for="nominal-34" class="list-group-item">
+12188 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-35" value="35" data-type="diamond">
+<label for="nominal-35" class="list-group-item">
+13515 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-36" value="36" data-type="diamond">
+<label for="nominal-36" class="list-group-item">
+22182 Diamonds
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-37" value="37" data-type="diamond">
+<label for="nominal-37" class="list-group-item">
+Starlight Member
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-38" value="38" data-type="diamond">
+<label for="nominal-38" class="list-group-item">
+
+Starlight Plus
+</label>
+</div>
+</div>
+<div class="col-lg-4 mt-3">
+<div class="list-group">
+<input type="radio" name="inlineRadioOptions" id="nominal-39" value="39" data-type="diamond">
+<label for="nominal-39" class="list-group-item">
+Twilight Pass
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col">
+<div class="card bg-dark shadow">
+<div class="card-header">
+<h5 class="card-title">Pilih Metode Pembayaran</h5>
+</div>
+<div class="card-body">
+<div class="area-list-payment-method">
+<div class="child-box payment-drawwer shadow" id="tfbank">
+<div class="header short-payment-support-info-head" onclick="openPaymentDrawer(this)">
+<div class="left">
+<b>
+<i class="fas fa-exchange-alt"></i> Transfer bank
+</b>
+</div>
+<div class="right"></div>
+</div>
+<div class="button-action-payment" style="display:none;">
+<ul>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-cekmutasicoid-bca" value="cekmutasicoid-bca">
+<label for="paymentMethod-cekmutasicoid-bca" class="payment-item">
+<div class="info-top">
+<div>
+<img src="https://cdnlogo.com/logos/b/32/bca-bank-central-asia.svg">
+ </div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Bank Central Asia (BCA)
+<div class="bangjeff-dicek">
+Dicek Setiap 3 Menit</div>
+</div>
+</label>
+</li>
+</ul>
+</div>
+<div class="short-payment-support-info" onclick="openPaymentDrawer(this)">
+<img src="https://cdnlogo.com/logos/b/32/bca-bank-central-asia.svg" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-cekmutasicoid-bca">
+<a class="open-button-action-payment">
+<i class="fas fa-chevron-down"></i>
+</a>
+<span class="channel-not-available" style="display: none;">Tidak
+tersedia
+pembayaran pada channel
+ini</span>
+</div>
+</div>
+<div class="child-box payment-drawwer shadow">
+<div class="header short-payment-support-info-head" onclick="openPaymentDrawer(this)">
+<div class="left">
+<b>
+<i class="far fa-credit-card"></i>
+Virtual Account
+</b>
+</div>
+<div class="right"></div>
+</div>
+<div class="button-action-payment" style="display:none;">
+<ul>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-MYBVA" value="tripay-MYBVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-MYBVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/ZT91lrOEad1582929126.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Maybank Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-PERMATAVA" value="tripay-PERMATAVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-PERMATAVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/szezRhAALB1583408731.png">
+ </div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Permata Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-BNIVA" value="tripay-BNIVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-BNIVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/n22Qsh8jMa1583433577.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+BNI Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+ <input type="radio" name="paymentMethod" id="paymentMethod-tripay-BRIVA" value="tripay-BRIVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-BRIVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/8WQ3APST5s1579461828.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+BRI Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-MANDIRIVA" value="tripay-MANDIRIVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-MANDIRIVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/T9Z012UE331583531536.png">
+ </div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Mandiri Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-SMSVA" value="tripay-SMSVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-SMSVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/KHcqcmqVFQ1607091889.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Sinarmas Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+ <li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-MUAMALATVA" value="tripay-MUAMALATVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-MUAMALATVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/GGwwcgdYaG1611929720.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Muamalat Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-CIMBVA" value="tripay-CIMBVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-CIMBVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/WtEJwfuphn1614003973.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+CIMB Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-SAMPOERNAVA" value="tripay-SAMPOERNAVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-SAMPOERNAVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/YAN25leid81631608321.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Sahabat Sampoerna Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+ <li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-BSIVA" value="tripay-BSIVA" data-fee="4250" data-fee-percent="0">
+<label for="paymentMethod-tripay-BSIVA" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/tEclz5Assb1643375216.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+BSI Virtual Account
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+</ul>
+</div>
+<div class="short-payment-support-info" onclick="openPaymentDrawer(this)">
+ <img src="../../tripay.co.id/images/payment-channel/ZT91lrOEad1582929126.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-MYBVA">
+<img src="../../tripay.co.id/images/payment-channel/szezRhAALB1583408731.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-PERMATAVA">
+<img src="../../tripay.co.id/images/payment-channel/n22Qsh8jMa1583433577.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-BNIVA">
+<img src="../../tripay.co.id/images/payment-channel/8WQ3APST5s1579461828.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-BRIVA">
+<img src="../../tripay.co.id/images/payment-channel/T9Z012UE331583531536.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-MANDIRIVA">
+<img src="../../tripay.co.id/images/payment-channel/KHcqcmqVFQ1607091889.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-SMSVA">
+<img src="../../tripay.co.id/images/payment-channel/GGwwcgdYaG1611929720.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-MUAMALATVA">
+<img src="../../tripay.co.id/images/payment-channel/WtEJwfuphn1614003973.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-CIMBVA">
+<img src="../../tripay.co.id/images/payment-channel/YAN25leid81631608321.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-SAMPOERNAVA">
+<img src="../../tripay.co.id/images/payment-channel/tEclz5Assb1643375216.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-BSIVA">
+<a class="open-button-action-payment">
+<i class="fas fa-chevron-down"></i>
+</a>
+<span class="channel-not-available" style="display: none;">Tidak
+tersedia
+pembayaran pada channel
+ini</span>
+</div>
+</div>
+<div class="child-box payment-drawwer shadow">
+<div class="header short-payment-support-info-head" onclick="openPaymentDrawer(this)">
+<div class="left">
+<b>
+<i class="fas fa-store"></i>
+Convenience Store
+</b>
+</div>
+<div class="right"></div>
+</div>
+<div class="button-action-payment" style="display:none;">
+<ul>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-ALFAMART" value="tripay-ALFAMART" data-fee="6000" data-fee-percent="0">
+<label for="paymentMethod-tripay-ALFAMART" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/jiGZMKp2RD1583433506.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Alfamart
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-INDOMARET" value="tripay-INDOMARET" data-fee="3500" data-fee-percent="0">
+<label for="paymentMethod-tripay-INDOMARET" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/zNzuO5AuLw1583513974.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Indomaret
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-ALFAMIDI" value="tripay-ALFAMIDI" data-fee="6000" data-fee-percent="0">
+<label for="paymentMethod-tripay-ALFAMIDI" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/aQTdaUC2GO1593660384.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Alfamidi
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+</ul>
+</div>
+<div class="short-payment-support-info" onclick="openPaymentDrawer(this)">
+ <img src="../../tripay.co.id/images/payment-channel/jiGZMKp2RD1583433506.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-ALFAMART">
+<img src="../../tripay.co.id/images/payment-channel/zNzuO5AuLw1583513974.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-INDOMARET">
+<img src="../../tripay.co.id/images/payment-channel/aQTdaUC2GO1593660384.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-ALFAMIDI">
+<a class="open-button-action-payment">
+<i class="fas fa-chevron-down"></i>
+</a>
+<span class="channel-not-available" style="display: none;">Tidak
+tersedia
+pembayaran pada channel
+ini</span>
+</div>
+</div>
+<div class="child-box payment-drawwer shadow">
+<div class="header short-payment-support-info-head" onclick="openPaymentDrawer(this)">
+<div class="left">
+<b>
+<i class="fas fa-wallet"></i>
+E-Wallet
+ </b>
+</div>
+<div class="right"></div>
+</div>
+<div class="button-action-payment" style="display:none;">
+<ul>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-OVO" value="tripay-OVO" data-fee="0" data-fee-percent="3">
+<label for="paymentMethod-tripay-OVO" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../../tripay.co.id/images/payment-channel/fH6Y7wDT171586199243.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+ OVO
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-QRIS" value="tripay-QRIS" data-fee="750" data-fee-percent="0.7">
+<label for="paymentMethod-tripay-QRIS" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../assets/img/logos/Shopeepay.png" height="10px">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Gopay, Dana, OVO, LinkAja, dll
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-QRISC" value="tripay-QRISC" data-fee="750" data-fee-percent="0.7">
+<label for="paymentMethod-tripay-QRISC" class="payment-item">
+<div class="info-top">
+<div>
+<img src="../assets/img/logos/Gopay.png">
+<img src="../assets/img/logos/Dana.png">
+<img src="../assets/img/logos/Shopeepay.png">
+<img src="../assets/img/logos/OVO.png">
+<img src="../assets/img/logos/Linkaja.png">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Gopay, Dana, OVO, LinkAja, dll
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-tripay-QRISD" value="tripay-QRISD" data-fee="750" data-fee-percent="0.7">
+<label for="paymentMethod-tripay-QRISD" class="payment-item">
+ <div class="info-top">
+<div>
+<img src="../assets/img/logos/Dana.png" height="10px">
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom">
+Gopay, Dana, OVO, LinkAja, dll
+<div class="bangjeff-dicek">
+Dicek Otomatis</div>
+</div>
+</label>
+</li>
+</ul>
+</div>
+<div class="short-payment-support-info" onclick="openPaymentDrawer(this)">
+<img src="../../tripay.co.id/images/payment-channel/fH6Y7wDT171586199243.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-OVO">
+<img src="../assets/img/logos/Shopeepay.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-QRIS">
+<img src="../assets/img/logos/Linkaja.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-QRISC">
+<img src="../assets/img/logos/Dana.png" alt="" class="m-1" style="background-color:white;border-radius: 3px;border: 1px solid white" id="paymentMethodIMG-tripay-QRISD">
+<a class="open-button-action-payment">
+<i class="fas fa-chevron-down"></i>
+</a>
+<span class="channel-not-available" style="display: none;">Tidak
+tersedia
+pembayaran pada channel
+ini</span>
+</div>
+</div>
+<div class="child-box payment-drawwer shadow d-none">
+<div class="header short-payment-support-info-head" onclick="openPaymentDrawer(this)">
+ <div class="left">
+<b><i class="fas fa-bolt"></i> Saldo</b>
+</div>
+<div class="right"></div>
+</div>
+<div class="button-action-payment" style="display:none;">
+<ul>
+<li>
+<input type="radio" name="paymentMethod" id="paymentMethod-saldo" value="saldo" disabled>
+<label for="paymentMethod-saldo" class="payment-item">
+<div class="info-top">
+<div>
+<i class="fas fa-wallet"></i>
+Oura Store E-Wallet
+</div>
+<b id="payment"></b>
+</div>
+<div class="info-bottom" id="info-bottomWallet">
+Login untuk
+menggunakan Oura Store E-Wallet
+</div>
+</label>
+</li>
+</ul>
+</div>
+<div class="short-payment-support-info" onclick="openPaymentDrawer(this)">
+<i class="fas fa-wallet me-2" id="paymentMethodIMG-saldo"></i>
+<a class="open-button-action-payment">
+<i class="fas fa-chevron-down"></i>
+</a>
+<span class="channel-not-available" style="display: none;">Tidak
+tersedia
+pembayaran pada channel
+ini</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row mt-3">
+<div class="col">
+<div class="card bg-dark shadow">
+<div class="card-header">
+<h5 class="card-title">Nomor Whatsapp</h5>
+</div>
+<div class="card-body">
+<div class="form-group mb-3">
+<label for="denom">Nomor Whatsapp</label>
+<input class="form-control" placeholder="Nomor Whatsapp [628xxxxx]" type="number" name="denom" id="denom" required>
+</div>
+<div class="g-recaptcha" data-sitekey="6LerrmYfAAAAAGFwsABdUqKZHHWvxdXv6mA6cfhA">
+</div>
+</div>
+</div>
+</div>
+ </div>
+<div class="row mt-3 mb-3">
+<div class="col-lg-12 clearfix">
+<input type="hidden" id="apikey" name="apikey" value="">
+<input type="hidden" name="product_name" id="product_name" value="Mobile Legends">
+<input type="hidden" name="product_id" id="product_id" value="1">
+<div class="float-end">
+<button class="btn btn-primary" onclick="beli();">
+<i class="fas fa-cart-arrow-down"></i>
+Order Now
+</button>
+<br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="modalInformations" aria-hidden="true" aria-labelledby="modalInformationsLabel" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+<div class="modal-content bg-dark" style="box-shadow:0 0 3rem #000000 !important">
+<div class="modal-body">
+<div class="row" id="textInfo">
+</div>
+<div class="row">
+<div class="col float-start">
+<div class="form-check" style="font-size:12px">
+<input class="form-check-input" type="checkbox" value="" id="dontshowinfo">
+<label class="form-check-label" for="dontshowinfo">
+Jangan Tampilkan lagi
+</label>
+</div>
+</div>
+<div class="col text-end">
+<button type="submit" name="read_popup_news_b2c" style="font-size:12px" class="btn btn-primary btn-sm">
+Tutup
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer mt-auto border-dark  shadow-lg">
+<div class="container mt-5">
+<div class="row">
+<div class="col-lg-6">
+<img src="../../ourastore.com/assets/img/settings/1652681321tes%201.png" alt="LOGO" style="float:left;margin-left:2%;height:40px;
+                                                                                                                            width:40px; " class="bi me-2">
+<h5 class="text-uppercase mt-2" style="margin:0">Oura Store</h5>
+<div class="mt-2">
+<p>Oura Store Adalah Tempat Top Up Games Yang Aman, Murah. Oura Store Menyediakan Layanan Top Up Games seperti Diamond Mobile Legends, FF, Genshin Impact, AOV, dll. Untuk Mempermudah Pembayaran Anda Disini Kami Juga Menyediakan Metode Pembayaran Alfamart, Bank BCA, Bank Mandiri, Bank BNI, Bank Bri, DANA, OVO, Gopay, Shopee Pay, Link Aja, dll. Jika ada kendala silahkan klik logo CS pada kanan bawah di web ini.</p>
+</div>
+</div>
+<div class="col-lg-3">
+<h5 class="mt-2">Menu</h5>
+<div class="mt-2">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a href="../index.html" class="nav-link text-white ">
+<i class="fas fa-angle-right text-yellow"></i>
+Home
+ </a>
+</li>
+<li class="nav-item">
+<a href="../contact-us.html" class="nav-link text-white ">
+<i class="fas fa-angle-right text-yellow"></i>
+Contact us
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col">
+<h5 class="mt-2">Other Services</h5>
+<div class="mt-2">
+<ul class="nav flex-column">
+</a>
+</li>
+<li class="nav-item">
+<a href="free-fire-proses-otomatis.html" class="nav-link text-white">
+<i class="fas fa-angle-right text-yellow"></i>
+Free Fire
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="container-fluid mt-2">
+<div class="row" id="footer-credit" style="background:#181b1f">
+<div class="col">
+<div class="container mt-2 mb-2 text-center">
+<small>
+Copyright &copy; 2021 by <a href="../index.html" class="text-white">Oura Store</a>
+- <a href="../terms-and-conditions.html" class="text-white">Terms and
+conditions</a>
+- <a href="../privacy-policy.html" class="text-white">Privacy Policy</a>
+</small>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+<script src="../assets/admin/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script src="../assets/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../assets/js/switch.js"></script>
+<script src="../assets/js/promoBox.js"></script>
+<script>
+        var product_data = [{"id":4,"product_id":1,"name":"86 Diamonds","price":25000,"discount":0,"layanan":"86","type_data":"diamond","created_at":"2022-04-12 05:02:39","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":187,"coin_used":64,"startup":19072},{"id":5,"product_id":1,"name":"172 Diamonds","price":45000,"discount":0,"layanan":"172","type_data":"diamond","created_at":"2022-04-12 05:04:21","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":188,"coin_used":127,"startup":37846},{"id":6,"product_id":1,"name":"257 Diamonds","price":65000,"discount":0,"layanan":"257","type_data":"diamond","created_at":"2022-04-12 05:53:03","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":189,"coin_used":191,"startup":56918},{"id":12,"product_id":1,"name":"344 Diamonds","price":85000,"discount":0,"layanan":"172,172","type_data":"diamond","created_at":"2022-04-12 06:01:26","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":190,"coin_used":254,"startup":75692},{"id":7,"product_id":1,"name":"429 Diamonds","price":110000,"discount":0,"layanan":"257,172","type_data":"diamond","created_at":"2022-04-12 05:54:00","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":191,"coin_used":318,"startup":94764},{"id":8,"product_id":1,"name":"514 Diamonds","price":130000,"discount":0,"layanan":"257,257","type_data":"diamond","created_at":"2022-04-12 05:56:57","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":192,"coin_used":382,"startup":113836},{"id":9,"product_id":1,"name":"600 Diamonds","price":150000,"discount":0,"layanan":"257,257,86","type_data":"diamond","created_at":"2022-04-12 05:58:08","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":193,"coin_used":446,"startup":132908},{"id":10,"product_id":1,"name":"706 Diamonds","price":170000,"discount":0,"layanan":"706","type_data":"diamond","created_at":"2022-04-12 05:59:58","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":194,"coin_used":508,"startup":151384},{"id":11,"product_id":1,"name":"792 Diamonds","price":195000,"discount":0,"layanan":"706,86","type_data":"diamond","created_at":"2022-04-12 06:00:35","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":195,"coin_used":572,"startup":170456},{"id":13,"product_id":1,"name":"878 Diamonds","price":215000,"discount":0,"layanan":"706,172","type_data":"diamond","created_at":"2022-04-12 06:02:33","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":196,"coin_used":635,"startup":189230},{"id":14,"product_id":1,"name":"963 Diamonds","price":235000,"discount":0,"layanan":"706,257","type_data":"diamond","created_at":"2022-04-12 06:05:07","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":197,"coin_used":699,"startup":208302},{"id":15,"product_id":1,"name":"1049 Diamonds","price":255000,"discount":0,"layanan":"706,257,86","type_data":"diamond","created_at":"2022-04-12 06:06:58","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":198,"coin_used":763,"startup":227374},{"id":16,"product_id":1,"name":"1135 Diamonds","price":275000,"discount":0,"layanan":"706,257,172","type_data":"diamond","created_at":"2022-04-12 06:08:15","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":199,"coin_used":826,"startup":246148},{"id":17,"product_id":1,"name":"1412 Diamonds","price":340000,"discount":0,"layanan":"706,706","type_data":"diamond","created_at":"2022-04-12 06:08:41","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":200,"coin_used":1016,"startup":302768},{"id":18,"product_id":1,"name":"1584 Diamonds","price":380000,"discount":0,"layanan":"706,706,172","type_data":"diamond","created_at":"2022-04-12 06:09:16","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":201,"coin_used":1143,"startup":340614},{"id":19,"product_id":1,"name":"1841 Diamonds","price":445000,"discount":0,"layanan":"706,706,257,172","type_data":"diamond","created_at":"2022-04-12 06:09:59","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":202,"coin_used":1334,"startup":397532},{"id":20,"product_id":1,"name":"2195 Diamonds","price":500000,"discount":0,"layanan":"2195","type_data":"diamond","created_at":"2022-04-12 06:10:41","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":203,"coin_used":1524,"startup":454152},{"id":21,"product_id":1,"name":"2280 Diamonds","price":525000,"discount":0,"layanan":"2195,86","type_data":"diamond","created_at":"2022-04-12 06:11:39","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":204,"coin_used":1588,"startup":473224},{"id":22,"product_id":1,"name":"3072 Diamonds","price":710000,"discount":0,"layanan":"2195,706,172","type_data":"diamond","created_at":"2022-04-12 06:12:15","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":205,"coin_used":2159,"startup":643382},{"id":23,"product_id":1,"name":"3688 Diamonds","price":830000,"discount":0,"layanan":"3688","type_data":"diamond","created_at":"2022-04-12 06:12:47","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":206,"coin_used":2540,"startup":756920},{"id":24,"product_id":1,"name":"3860 Diamonds","price":875000,"discount":0,"layanan":"3688,172","type_data":"diamond","created_at":"2022-04-12 06:13:30","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":207,"coin_used":2667,"startup":794766},{"id":25,"product_id":1,"name":"4031 Diamonds","price":915000,"discount":0,"layanan":"3688,257,86","type_data":"diamond","created_at":"2022-04-12 06:14:07","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":208,"coin_used":2795,"startup":832910},{"id":26,"product_id":1,"name":"4566 Diamonds","price":1045000,"discount":0,"layanan":"3688,706,172","type_data":"diamond","created_at":"2022-04-12 06:14:50","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":209,"coin_used":3175,"startup":946150},{"id":27,"product_id":1,"name":"5532 Diamonds","price":1250000,"discount":0,"layanan":"5532","type_data":"diamond","created_at":"2022-04-12 06:15:18","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":210,"coin_used":3810,"startup":1135380},{"id":28,"product_id":1,"name":"6238 Diamonds","price":1420000,"discount":0,"layanan":"5532,706","type_data":"diamond","created_at":"2022-04-12 06:15:58","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":211,"coin_used":4318,"startup":1286764},{"id":29,"product_id":1,"name":"6752 Diamonds","price":1545000,"discount":0,"layanan":"5532,706,257,257","type_data":"diamond","created_at":"2022-04-12 06:16:28","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":212,"coin_used":4700,"startup":1400600},{"id":30,"product_id":1,"name":"8432 Diamonds","price":1920000,"discount":0,"layanan":"5532,2195,706","type_data":"diamond","created_at":"2022-04-12 06:17:08","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":213,"coin_used":5842,"startup":1740916},{"id":31,"product_id":1,"name":"9288 Diamonds","price":2080000,"discount":0,"layanan":"9288","type_data":"diamond","created_at":"2022-04-12 06:17:34","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":214,"coin_used":6350,"startup":1892300},{"id":32,"product_id":1,"name":"11064 Diamonds","price":2500000,"discount":0,"layanan":"5532,5532","type_data":"diamond","created_at":"2022-04-12 06:18:14","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":215,"coin_used":7620,"startup":2270760},{"id":33,"product_id":1,"name":"11321 Diamonds","price":2560000,"discount":0,"layanan":"5532,5532,257","type_data":"diamond","created_at":"2022-04-12 06:18:48","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":216,"coin_used":7811,"startup":2327678},{"id":34,"product_id":1,"name":"12188 Diamonds","price":2750000,"discount":0,"layanan":"9288,2195,706","type_data":"diamond","created_at":"2022-04-12 06:19:22","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":217,"coin_used":8382,"startup":2497836},{"id":35,"product_id":1,"name":"13515 Diamonds","price":3060000,"discount":0,"layanan":"5532,5532,2195,257","type_data":"diamond","created_at":"2022-04-12 06:20:02","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":218,"coin_used":9335,"startup":2781830},{"id":36,"product_id":1,"name":"22182 Diamonds","price":5000000,"discount":0,"layanan":"9288,9288,2195,706,706","type_data":"diamond","created_at":"2022-04-12 06:20:46","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":219,"coin_used":15240,"startup":4541520},{"id":37,"product_id":1,"name":"Starlight Member","price":140000,"discount":0,"layanan":"starlight","type_data":"diamond","created_at":"2022-04-12 07:12:45","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":220,"coin_used":424,"startup":126352},{"id":38,"product_id":1,"name":"Starlight Plus","price":320000,"discount":0,"layanan":"starlightplus","type_data":"diamond","created_at":"2022-04-12 07:13:18","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":221,"coin_used":955,"startup":284590},{"id":39,"product_id":1,"name":"Twilight Pass","price":140000,"discount":0,"layanan":"twilight","type_data":"diamond","created_at":"2022-04-12 07:13:48","updated_at":"2022-06-08 17:22:55","active":1,"role_prices":null,"ordered":222,"coin_used":424,"startup":126352}];
+        var templateNotify =
+            `<div class="alert alert-{0} alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <span data-notify="icon" class="tim-icons icon-bell-55"></span>
+                <span>
+                    <b> {1} <br> </b> {2}</span>
+                <a href="{3}" target="{4}" data-notify="url"></a>
+            </div>
+            `;
+        var act_price;
+        var act_type;
+        var subtotal;
+        // var templateNotify =
+        //     `<div class="alert alert-{0} alert-with-icon">
+    //                                 <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+    //                                     <i class="tim-icons icon-simple-remove"></i>
+    //                                 </button>
+    //                                 <span data-notify="icon" class="tim-icons icon-bell-55"></span>
+    //                                 <span>
+    //                                     <b> {1} <br> </b> {2}</span>
+    //                                 <div class="progress" data-notify="progressbar">
+    //                                     <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+    //                                 </div>
+    //                                 <a href="{3}" target="{4}" data-notify="url"></a>
+    //                             </div>`;
+        $(document).ready(() => {
+            setTimeout(() => {
+                try {
+                    $('#info-bottomWallet').html(`Saldo E-Wallet Rp.(${window.userdata.balance})`)
+                } catch (error) {
+                    // console.error(error);
+                }
+            }, 1000);
+            let _tgl = new Date();
+            let hours = _tgl.getHours();
+            if (hours >= 22|| hours <= 3) {
+                toastr.info("Transfer bank tidak berlaku pada jam 22:00 - 03:00 WIB", "Informasi");
+                $("#tfbank").remove();
+            }
+            $('#denom').on('input', function() {
+                if (this.value.startsWith('08')) {
+                    this.value = "628";
+                }
+                this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
+            });
+            $("#userData input,select").on('input',function() {
+                // check if the input is qty
+                if ($(this).attr("name") == "qty") {
+                    // get the value of the input
+                    let qty = $(this).val();
+                    // get the price of the product
+                    let price = act_price;
+                    // get the subtotal
+                    subtotal = qty * price;
+                    // set the subtotal value
+                    changePayments()
+                    $("input[type='radio'][name='inlineRadioOptions']:checked").trigger("click");
+                }
+            })
+            $("input[type=radio]#paymentMethod-qris").parent().hide()
+            changePayments();
+            $("input[type='radio'][name='paymentMethod']").change(function() {
+                if ($(this).is(":checked")) {
+
+                    $("li.active").removeClass("active")
+                    $(this).parent('li').addClass("active")
+                }
+            })
+        })
+
+        function pwEye(e) {
+            var type = $(e).parent().parent().find("input").attr("type");
+            console.log(type);
+            console.log($(e).parent().parent().parent())
+            if (type == "password") {
+                $(e).removeClass("fa-eye-slash");
+                $(e).addClass("fa-eye");
+                $(e).parent().parent().find("input").attr("type", "text");
+            } else if (type == "text") {
+                $(e).removeClass("fa-eye");
+                $(e).addClass("fa-eye-slash");
+                $(e).parent().parent().find("input").attr("type", "password");
+            }
+        }
+        let isPromo = null;
+
+        function checkPromo() {
+            let promo_code = $('#promo_code').val();
+            $.ajax({
+                url: `https://www.ourastore.com/api/checkPromo`,
+                method: 'POST',
+                data: {
+                    promo_code: promo_code,
+                    product_id: $('#product_id').val()
+                },
+                success: function(resp) {
+                    if (resp.success) {
+                        Swal.fire({
+                            title: 'Success',
+                            html: resp.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        })
+                        isPromo = resp.data;
+                        console.log(resp)
+                    } else {
+                        Swal.fire({
+                            title: 'Error',
+                            html: resp.message,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        })
+                        isPromo = null;
+                    }
+                }
+            })
+        }
+
+        function changePayments() {
+            $("input[type='radio'][name='inlineRadioOptions']").click(function() {
+                if ($(this).is(":checked")) {
+                    product_data.forEach(i => {
+                        if (i.id == parseFloat($(this).val())) {
+                            act_type = $(this).data('type');
+                            if ($(this).data('type') == "voucher") {
+                                let $data_id = $(this).val();
+                                $.get(`https://www.ourastore.com/voucherstock?data_id=${$data_id}`, res => {
+                                    if (res.success) {
+                                        $(".info-top #payment").map(function(i, e) {
+                                            let $ipt = $(e).parent().parent().parent().find(
+                                                'input[type=radio]')
+                                            $ipt.attr('disabled',
+                                                false)
+                                        })
+                                    } else {
+                                        $(".info-top #payment").map(function(i, e) {
+                                            let $ipt = $(e).parent().parent().parent().find(
+                                                'input[type=radio]')
+                                            $ipt.attr('disabled',
+                                                true)
+                                        })
+                                    }
+                                    if (res.stock > 0) {
+                                        toastr.info(`Stock ${res.stock} buah`, 'Info Stock');
+                                    } else {
+                                        toastr.error(`Stock Kosong`, 'Info Stock');
+                                    }
+                                })
+                            }
+                            let _visibleDenom = [];
+
+                            $(".info-top #payment").map(function() {
+                                let real_price = i.price;
+                                if ($("#userData input[name=qty]").length>0) {
+                                    if ($("#userData input[name=qty]").val() > 0) {
+                                        real_price = i.price * $("#userData input[name=qty]").val();
+                                    }
+                                }
+                                let getSes = null;
+                                let $optPaygate = $(this).parent().parent().siblings(
+                                    "input[type='radio']");
+                                let currency = "";
+                                console.log($optPaygate.val())
+                                switch ($optPaygate.val().split('-')[0]) {
+                                    case "toyyibpay":
+                                        currency = "MYR";
+                                        break;
+                                    case "hitpay":
+                                        currency = "SGD";
+                                        break;
+                                    case "saldo":
+                                        currency = "IDR";
+                                        break;
+                                    default:
+                                        currency = "IDR";
+                                        break;
+                                }
+                                if (getSes) {
+                                    console.log(i.price)
+                                    if (i.role_prices != null) {
+                                        let rolePrice = JSON.parse(i.role_prices);
+                                        console.log(rolePrice);
+                                        rolePrice = rolePrice.filter(v => v.name == getSes.status)[
+                                            0];
+                                        real_price = rolePrice ? rolePrice.price :
+                                            i.price;
+                                        real_price = real_price * $("#userData input[name=qty]").val();
+                                        console.log("real_price", real_price);
+                                        if (real_price != i.price) {
+                                            $(this).html(
+                                                `${parseFloat(real_price).toLocaleString("ID", {
+                                                    style:'currency',
+                                                    currency:currency,
+                                                    minimumFractionDigits: 2
+                                                })} (<strike class="text-danger">${parseFloat(i.price).toLocaleString("ID", {
+                                                    style:'currency',
+                                                    currency:currency,
+                                                    minimumFractionDigits: 2
+                                                })}</strike>)`
+                                            )
+                                            $optPaygate.parent().find("#discPercent").remove();
+                                            $optPaygate.parent().append(`<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="discPercent">${(((real_price - i.price) / i
+                                            .price) * 100).toFixed(1)}%</span>`)
+                                        } else {
+                                            $optPaygate.parent().find("#discPercent").remove();
+                                            $(this).html(parseFloat(real_price).toLocaleString(
+                                                "id-ID", {
+                                                    style: 'currency',
+                                                    currency: currency,
+                                                    minimumFractionDigits: 0
+                                                }))
+                                        }
+                                    } else {
+                                        $optPaygate.parent().find("#discPercent").remove();
+                                        $(this).html(parseFloat(real_price).toLocaleString(
+                                            "id", {
+                                                style: 'currency',
+                                                currency: currency,
+                                                minimumFractionDigits: 0
+                                            }))
+                                    }
+                                } else {
+                                    $(this).html(parseFloat(real_price).toLocaleString("id", {
+                                        style: 'currency',
+                                        currency: currency,
+                                        minimumFractionDigits: 0
+                                    }))
+                                    console.log(i.price)
+                                }
+                                let $right = $(this).parent().parent().parent().parent().parent()
+                                    .siblings(".header").find(".right");
+                                $right.html(parseFloat(real_price).toLocaleString("id", {
+                                        style: 'currency',
+                                        currency: currency,
+                                        minimumFractionDigits: 0
+                                    }))
+                                let minimumPayment = 0;
+                                let maximumPayment = 1000000000;
+                                switch ($optPaygate.val()) {
+                                    case "tripay-INDOMARET":
+                                        minimumPayment = 10000;
+                                        maximumPayment = 2500000;
+                                        break;
+                                    case "tripay-ALFAMART":
+                                    case "tripay-ALFAMIDI":
+                                        minimumPayment = 5000;
+                                        maximumPayment = 2500000;
+                                        break;
+                                    case "tripay-PERMATAVA":
+                                    case "tripay-MYBVA":
+                                    case "tripay-MANDIRIVA":
+                                    case "tripay-BNIVA":
+                                    case "tripay-BRIVA":
+                                    case "tripay-BCAVA":
+                                    case "tripay-MUAMALATVA":
+                                    case "tripay-SMSVA":
+                                    case "tripay-CIMBVA":
+                                    case "tripay-SAMPOERNAVA":
+                                    case "tripay-BRIVAOP":
+                                    case "tripay-BSIVA":
+                                    case "tripay-DANAMONVA":
+                                    case "tripay-CIMBVAOP":
+                                    case "tripay-DANAMONOP":
+                                    case "tripay-BNIVAOP":
+                                    case "tripay-HANAVAOP":
+                                        minimumPayment = 10000;
+                                        maximumPayment = 100000000;
+                                        break;
+                                    case "bca":
+                                        minimumPayment = 10000;
+                                        break;
+                                    case "tripay-OVO":
+                                        minimumPayment = 1000;
+                                        maximumPayment = 10000000;
+                                        break;
+                                    case "tripay-QRIS":
+                                    case "tripay-QRISC":
+                                    case "tripay-QRISNOBU":
+                                    case "tripay-QRISD":
+                                    case "tripay-QRISOP":
+                                    case "tripay-QRISCOP":
+                                        minimumPayment = 1000;
+                                        maximumPayment = 5000000;
+                                        break;
+                                    case "toyyibpay-1":
+                                        minimumPayment = 0.01;
+                                    default:
+                                        break;
+                                }
+                                if (real_price < minimumPayment || maximumPayment < real_price) {
+                                    // $optPaygate.attr('disabled', true);
+                                    $optPaygate.parent().slideUp();
+                                    if ($optPaygate.is(":checked")) {
+                                        $optPaygate.prop('checked', false);
+                                    }
+                                    $optPaygate.parent().addClass("hideme")
+                                    let _payCode = $optPaygate.val();
+                                    $optPaygate.parent().parent().parent().parent()
+                                        .find(`#paymentMethodIMG-${_payCode}`).fadeOut();
+                                } else {
+                                    // $optPaygate.attr('disabled', false);
+                                    $optPaygate.parent().slideDown();
+                                    let _payCode = $optPaygate.val();
+                                    $optPaygate.parent().parent().parent().parent()
+                                        .find(`#paymentMethodIMG-${_payCode}`).fadeIn();
+                                    $optPaygate.parent().removeClass("hideme")
+                                }
+                                act_price = real_price
+                                // console.log($optPaygate);
+                                if ($optPaygate.data("fee")) {
+                                    // ADDING FEE TOTAL TO PAYMENT METHOD
+                                    // let _iprice = i.price * $("#userData input[name=qty]").val();
+                                    // ab_act_price = (_iprice) + parseInt($optPaygate.data("fee")) +
+                                    //     parseFloat($optPaygate.data("fee-percent"))
+                                    // ab_act_price = _iprice + (_iprice * (parseFloat($optPaygate
+                                    //     .data(
+                                    //         "fee-percent")) / 100)) + $optPaygate.data("fee")
+                                    // $right.html(parseFloat(ab_act_price).toLocaleString("id"))
+                                    // $(this).html(parseFloat(ab_act_price).toLocaleString("id", {
+                                    //     style: 'currency',
+                                    //     currency: currency,
+                                    //     minimumFractionDigits: 0
+                                    // }))
+                                    // END HERE
+
+                                    act_price = real_price;
+                                    // console.log($optPaygate);
+                                }
+                            })
+                            $(".info-top #payment").parent().parent().parent().parent().map(
+                                function(i, e) {
+                                    let _hiddenDenom = $(e).find('.hideme').length;
+                                    let _totalDenom = $(e).find('li').length;
+                                    if (_hiddenDenom == _totalDenom) {
+                                        $(e).parent().parent().slideUp();
+                                    } else {
+                                        $(e).parent().parent().slideDown();
+                                    }
+                                })
+                        }
+                    });
+                }
+            })
+        }
+
+        function Notifikasi(title, message, type) {
+            $.notify({
+                message: message,
+                title: title
+            }, {
+                offset: {
+                    x: 5,
+                    y: 100
+                },
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+                showProgressbar: true,
+                newest_on_top: true,
+                z_index: 50000,
+                type: type,
+                template: templateNotify
+            });
+        }
+
+        function beli() {
+            let userData = [];
+            var bisaSubmit = true;
+            $("#userData input,select").map(function() {
+                userData.push({
+                    name: $(this)[0].name,
+                    value: $(this).val()
+                });
+            })
+            console.log(userData)
+            var nameData = $('input[name="inlineRadioOptions"]:checked').parent().text().trim();
+            var idData = $('input[type="radio"][name="inlineRadioOptions"]:checked').val();
+            var paymentMethod = $('input[type="radio"][name="paymentMethod"]:checked').val();
+            let currency = "";
+            userData.forEach((k, a) => {
+                if (!k.value) {
+                    // Notifikasi("Warning", `Data ${k.name} kosong, silahkan di input`, "danger");
+                    toastr.error(`Data ${k.name} kosong, silahkan di input`, "Warning")
+                    bisaSubmit = false;
+                }
+            });
+            if (nameData == "") {
+                // Notifikasi("Warning", `Nominal belum dipilih`, "warning");
+                toastr.warning(`Nominal belum dipilih`, "Warning")
+                bisaSubmit = false;
+            }
+            if (paymentMethod == null) {
+                // Notifikasi("Warning", "Metode pembayaran belum di pilih", "primary")
+                toastr.error(`Metode pembayaran belum di pilih`, "Warning")
+                bisaSubmit = false;
+            }
+            switch (paymentMethod.split('-')[0]) {
+                case "toyyibpay":
+                    currency = "MYR";
+                    break;
+                case "hitpay":
+                    currency = "SGD";
+                    break;
+                case "saldo":
+                    currency = "IDR";
+                    break;
+                default:
+                    currency = "IDR";
+                    break;
+            }
+            // if ($("#g-recaptcha-response").val() == "") {
+            // // Notifikasi("Danger", "Captcha salah", primary);
+            //    toastr.error(`Captcha salah`, "Warning")
+            //    bisaSubmit = false;
+            // }
+            let harga_promo = act_price;
+            if (isPromo != null) {
+                console.log(isPromo)
+                if (isPromo.type == "percentage") {
+                    harga_promo = harga_promo - (harga_promo * isPromo.value / 100)
+                } else {
+                    harga_promo = harga_promo - isPromo.value
+                }
+            }
+            if (bisaSubmit) {
+                let apikey = $("#apikey").val()
+                var _form = {
+                    dataId: userData,
+                    nominal: {
+                        name: nameData,
+                        id: idData,
+                        product_id: $("#product_id").val().trim(),
+                        product_name: $("#product_name").val().trim()
+                    },
+                    price: isPromo ? harga_promo : act_price,
+                    paymentMethod: paymentMethod,
+                    apikey: apikey,
+                    promo_code: $("#promo_code").length ? $("#promo_code").val().trim() : "",
+                    number: $("#denom").val(),
+                    captcha_response: $("#g-recaptcha-response").val()
+                }
+                $.ajax({
+                    url: `https://www.ourastore.com/order/check`,
+                    data: _form,
+                    method: 'POST',
+                    beforeSend: () => {
+                        Swal.fire({
+                            title: 'Tunggu sebentar',
+                            allowOutsideClick: false
+                        })
+                        Swal.showLoading();
+                    },
+                    success: function(result) {
+                        if (result.status) {
+
+                            txt = [
+                                _form.nominal.product_name + (act_type == 'diamond' ?
+                                    `<br>Nickname : ${result.message}<br>` + _form.dataId.map(
+                                        k => `${k.name}: ${k.value}`).join(
+                                        '<br>') + "" : ""),
+                                `Data : ` + _form.nominal.name,
+                                isPromo ? `Promo : -` + (isPromo && isPromo.type == "percentage" ?
+                                    `${isPromo.value}%` :
+                                    `${isPromo && isPromo.type == "amount" ? `Rp. ${isPromo.value}` : "0"}`
+                                ) : "Promo : -",
+                                `Harga : ${parseFloat(_form.price).toLocaleString("id-ID", {
+                                            style: 'currency',
+                                            currency: currency,
+                                            minimumFractionDigits: 0
+                                        })}`,
+                                `Metode Pembayaran : ${_form.paymentMethod.replace("tripay-","").replace("cekmutasicoid-","").replace("hitpay-","").replace("-1","")}`,
+                                ``,
+                                `Note: Harga ini belum termasuk biaya admin!`
+                            ];
+                            Swal.fire({
+                                title: 'Data Pesanan',
+                                html: txt.join("<br>"),
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Beli Sekarang'
+                            }).then((result) => {
+                                console.log(result)
+                                if (result.isConfirmed) {
+                                    // order(_form)
+                                    // Verif without otp
+                                    verif(_form)
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                title: result.message,
+                                icon: 'error'
+                            })
+                        }
+                    }
+                })
+            }
+        }
+
+        // function order(_form) {
+        //     _form.type = "otp"
+
+        //     $.ajax({
+        //         url: `https://www.ourastore.com/order/add`,
+        //         data: _form,
+        //         method: 'POST',
+        //         beforeSend: () => {
+        //             Swal.fire({
+        //                 title: 'Tunggu sebentar',
+        //                 allowOutsideClick: false
+        //             })
+        //             Swal.showLoading();
+        //         },
+        //         success: (result) => {
+        //             if (result.success) {
+        //                 Swal.fire({
+        //                     title: 'Input OTP',
+        //                     text: result.message,
+        //                     input: 'text',
+        //                     inputAttributes: {
+        //                         autocapitalize: 'off'
+        //                     },
+        //                     confirmButtonText: 'Login',
+        //                     showCancelButton: true,
+        //                     inputPlaceholder: 'Input OTP From Whatsapp',
+        //                     allowOutsideClick: () => !Swal.isLoading(),
+        //                     preConfirm: (otp) => verif(otp, _form)
+        //                 })
+        //             }
+        //         }
+        //     })
+        // }
+        // function verif(otp, _form) {
+        function verif(_form) {
+            _form.type = "verification"
+            //_form.otp = otp
+
+            $.ajax({
+                url: `https://www.ourastore.com/order/add`,
+                data: _form,
+                method: 'POST',
+                beforeSend: () => {
+                    Swal.fire({
+                        title: 'Tunggu sebentar',
+                        allowOutsideClick: false
+                    })
+                    Swal.showLoading();
+                },
+                success: (result) => {
+                    if (result.success) {
+                        return window.location.href = result.message;
+                    } else {
+                        return Swal.fire({
+                            title: 'Error',
+                            text: result.message,
+                            icon: 'error'
+                        });
+                    }
+                }
+            })
+        }
+
+        function openPaymentDrawer(elem) {
+            var $this = $(elem);
+
+
+            $('.payment-drawwer').not(this).each(function() {
+                var $parents = $(this);
+                $parents.find('.button-action-payment').slideUp(function() {
+                    $parents.removeClass('active');
+                });
+
+                $parents.find('.short-payment-support-info').find('img').slideDown();
+                $parents.find('.short-payment-support-info').find('i').removeClass('fa-chevron-up').addClass(
+                    'fa-chevron-down');
+            });
+
+            var $parents = $this.parents('.child-box');
+
+            // console.log('IsHidden', $parents.find('.button-action-payment').is(":hidden"));
+
+            if (!$parents.find('.button-action-payment').is(":hidden")) {
+                $parents.find('.button-action-payment').slideUp(function() {
+                    $parents.removeClass('active');
+                });
+
+                $parents.find('.short-payment-support-info').find('img').slideDown();
+                $parents.find('.short-payment-support-info').find('.fa-chevron-up').removeClass('fa-chevron-up').addClass(
+                    'fa-chevron-down');
+
+            } else {
+                $parents.find('.button-action-payment').slideDown(function() {
+                    $parents.addClass('active');
+                });
+                $parents.find('.short-payment-support-info').find('img').slideUp();
+                $parents.find('.short-payment-support-info').find('.fa-chevron-down').addClass('fa-chevron-up').removeClass(
+                    'fa-chevron-down');
+
+            }
+        }
+    </script>
+<div class="fab-container">
+<div class="fab fab-icon-holder" style="background-color:#FFF; padding:5px">
+<img src="../assets/img/logos/callcenter.png" class="img-fluid" alt="">
+</div>
+<ul class="fab-options">
+<li>
+<a href="https://www.instagram.com/ouraastore/" class="text-decoration-none" target="_blank">
+<div class="fab-icon-holder" style="background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);">
+<i class="fab fa-instagram"></i>
+</div>
+</a>
+</li>
+<li>
+<a href="https://wa.me/6281333686227" class="text-decoration-none" target="_blank">
+<div class="fab-icon-holder" style="background-color: #25D366;">
+<i class="fab fa-whatsapp"></i>
+</div>
+</a>
+</li>
+<li>
+<a href="https://www.tiktok.com/@ouraastore" class="text-decoration-none" target="_blank">
+<div class="fab-icon-holder" style="background-color: #5865F2;">
+<i class="fab fa-tiktok"></i>
+</div>
+</a>
+</li>
+</ul>
+<a href="#" class="act-btn-top text-decoration-none" onclick="toTop()" style="display: none; background-color: #bd4cae; bottom: 19px;">
+<i class="fas fa-angle-up mt-2"></i>
+</a>
+</div>
+</script>
+<script src="../../cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous">
+    </script>
+</body>
+<script>
+    mybutton = document.querySelector(".act-btn-top");
+    window.onscroll = function() {
+        scrollFunc()
+    };
+
+    function scrollFunc() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function toTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+<script>
+    $(document).ready(function() {
+        let $infoTexts = `<div class="col-12 mb-2"><div class="card" style="border:1px solid #4b4d50;background-color: #484d52;"><div class="card-header"><h5 class="card-title" style="color: #fff;">PERHATIKAN</h5></div><div class="card-body bg-dark pb-1"><div class="row"><div class="col-12" style="font-size:12px !important"><p class="card-text"><p><img style="width: 100%;" data-filename="INFORMASI.jpg" src="../assets/img/articles/20220516125625INFORMASI.jpg"><br><font color="#000000" style="background-color: rgb(0, 255, 0);">- Untuk Transfer Ke BCA a/n Messy Lusmitha Utami akan delay sekitar 3-10 menit. Karena sistem dari bank BCA Terutama Jika sedang EVENT</font><br>- Selalu simpan nomor INVOICE<br>-<span style="background-color: rgb(0, 255, 0);"><font color="#000000"> Status DONE</font></span> = diamond sudah masuk ke akun kalian<br>- Transfer sesuai totalan <font color="#000000"><span style="background-color: rgb(0, 255, 0);">yang bewarna HIJAU jangan dilebihkan/dikurangi</span><br><br></font>JIKA ADA KENDALA SILAHKAN HUBUNGI COSTUMER SERVICE PADA BAGIAN KANAN BAWAH WEBSITE INI</p>
+</p></div><div class="col-12" style="font-size:8px !important"><span class="card-text float-end">Updated: 2022-06-08 12:38:01</span></div></div></div></div></div>`;
+        if ($.cookie('dontshow')) {
+            $infoTexts = '';
+        }
+        if ($infoTexts) {
+            $("#modalInformations").modal('show');
+            if (localStorage.getItem("lightSwitch") && localStorage.getItem("lightSwitch") !== "dark") {
+                $infoTexts = $infoTexts.replace(/bg-dark/g, "bg-light");
+            }
+            $("#modalInformations").find("#textInfo").html($infoTexts);
+        }
+        $("button[name='read_popup_news_b2c']").click(function() {
+            if ($("#dontshowinfo").is(":checked")) {
+                var date = new Date();
+                date.setTime(date.getTime() + (10 * 60 * 1000)); // jam * menit * detik * milidetik
+                $.cookie('dontshow', true, {
+                    expires: date
+                });
+            }
+            $("#modalInformations").modal('hide');
+        });
+    })
+</script>
+
+<!-- Mirrored from www.ourastore.com/order/mobile-legends-proses-otomatis by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 16 Jun 2022 17:42:05 GMT -->
+</html>
